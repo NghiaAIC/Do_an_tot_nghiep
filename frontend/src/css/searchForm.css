@@ -1,0 +1,25 @@
+#search_form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 250px;
+  gap: 20px;
+  margin: 30px 20px;
+}
+#button {
+  width: 100px;
+}
+
+#label {
+  color: rgb(158, 27, 27);
+  font-weight: bold;
+}
+
+#search {
+  background-color: rgb(201, 19, 19);
+  color: aliceblue;
+  text-align: center;
+  padding: 5px 0px 10px 5px;
+  font-weight: bold;
+  font-size: 20px;
+}

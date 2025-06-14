@@ -1,0 +1,11 @@
+#form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+#form_image {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
