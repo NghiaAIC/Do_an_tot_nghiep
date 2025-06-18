@@ -24,8 +24,10 @@ def compare_faces(cloud_url, unknown_image_path, tolerance=0.6):
     unknown_encodings = face_recognition.face_encodings(unknown_image)
 
     if not known_encodings:
+        os.remove(known_image_path)
         return 3;#khong tim thay khuon mat trong anh goc
     if not unknown_encodings:
+        os.remove(known_image_path)
         return 4;#"khong tim thay khuon mat trong anh chup!"
 
     known_encoding = known_encodings[0]

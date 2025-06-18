@@ -75,10 +75,10 @@ const handleMessage = async (jsonAttendanceInfor) => {
         result[0][0].ID
       );
     } else {
-      client.publish("HTN/LCD", "ko co lop hoc");
+      client.publish("HTN/LCD", "No class now");
     }
   } else {
-    client.publish("HTN/LCD", "the ko hop le");
+    client.publish("HTN/LCD", "Invalid card");
     return;
   }
 };

@@ -16,6 +16,7 @@ cloudinary.config({
 const esp32CamIP = process.env.ESP32_CAM_IP;
 
 const updateAttendanceInfor = async (urlAnh, ket_qua, LopHocID) => {
+  if (ket_qua === 4) ket_qua = 0;
   const result = await con.query(
     `UPDATE diem_danh
      SET ket_qua = ?, hinh_anh = ?, thoi_gian = NOW()
@@ -53,13 +54,18 @@ const getImage = async (urlOriginalImage, LopHocID) => {
         }
 
         const compareFaceResult = stdout;
-        if (compareFaceResult == 4) client.publish("HTN/LCD", "chup lai");
+        if (compareFaceResult == 4)
+          client.publish("HTN/LCD", "Scan again, no face detected");
         else {
-          if (compareFaceResult == 1) client.publish("HTN/LCD", "success");
-          else client.publish("HTN/LCD", "failed!!!");
-        }
+          if (compareFaceResult == 1) client.publish("HTN/LCD", "Success");
+          else client.publish("HTN/LCD", "Failed!!!");
 
-        updateAttendanceInfor(urlImageAttendance, compareFaceResult, LopHocID);
+          updateAttendanceInfor(
+            urlImageAttendance,
+            compareFaceResult,
+            LopHocID
+          );
+        }
       }
     );
   } catch (error) {
